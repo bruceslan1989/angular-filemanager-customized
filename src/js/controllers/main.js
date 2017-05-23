@@ -338,8 +338,8 @@
                 $scope.apiMiddleware.apiHandler.error = errorMsg;
             });
         };
-		
-		$scope.loadMore = function(item) {
+        
+        $scope.loadMore = function(item) {
             item.itemLimit += $scope.config.itemLimit;
         };
 
