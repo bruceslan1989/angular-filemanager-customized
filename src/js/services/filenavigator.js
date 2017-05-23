@@ -58,9 +58,9 @@
         
         FileNavigator.prototype.buildTree = function(path) {
             var flatNodes = [], selectedNode = {};
-			parent.itemLimit = fileManagerConfig.itemLimit;
             function recursive(parent, item, path) {
                 var absName = path ? (path + '/' + item.model.name) : item.model.name;
+				parent.itemLimit = fileManagerConfig.itemLimit;
                 if (parent.name.trim() && path.trim().indexOf(parent.name) !== 0) {
                     parent.nodes = [];
                 }
