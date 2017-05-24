@@ -53,6 +53,10 @@
             return fileManagerConfig.isImageFilePattern.test(this.model.name);
         };
 
+        Item.prototype.isVideo = function() {
+            return fileManagerConfig.isVideoFilePattern.test(this.model.name);
+        };
+
         Item.prototype.isCompressible = function() {
             return this.isFolder();
         };
