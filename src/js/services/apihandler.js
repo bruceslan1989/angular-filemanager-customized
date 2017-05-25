@@ -38,16 +38,14 @@
             var dfHandler = customDeferredHandler || self.deferredHandler;
             var deferred = $q.defer();
             var data = {
-                params: {
-                    action: 'list',
-                    path: path
-                }
+                action: 'list',
+                path: path
             };
 
             self.inprocess = true;
             self.error = '';
 
-            $http.get(apiUrl, data).success(function(data, code) {
+            $http.post(apiUrl, data).success(function(data, code) {
                 dfHandler(data, deferred, code);
             }).error(function(data, code) {
                 dfHandler(data, deferred, code, 'Unknown error listing, check the response');
@@ -92,7 +90,7 @@
             };
             self.inprocess = true;
             self.error = '';
-            $http.put(apiUrl, data).success(function(data, code) {
+            $http.post(apiUrl, data).success(function(data, code) {
                 self.deferredHandler(data, deferred, code);
             }).error(function(data, code) {
                 self.deferredHandler(data, deferred, code, $translate.instant('error_moving'));
@@ -112,7 +110,7 @@
 
             self.inprocess = true;
             self.error = '';
-            $http.delete(apiUrl, data).success(function(data, code) {
+            $http.post(apiUrl, data).success(function(data, code) {
                 self.deferredHandler(data, deferred, code);
             }).error(function(data, code) {
                 self.deferredHandler(data, deferred, code, $translate.instant('error_deleting'));
@@ -166,7 +164,7 @@
 
             self.inprocess = true;
             self.error = '';
-            $http.get(apiUrl, data).success(function(data, code) {
+            $http.post(apiUrl, data).success(function(data, code) {
                 self.deferredHandler(data, deferred, code);
             }).error(function(data, code) {
                 self.deferredHandler(data, deferred, code, $translate.instant('error_getting_content'));
@@ -188,7 +186,7 @@
             self.inprocess = true;
             self.error = '';
 
-            $http.put(apiUrl, data).success(function(data, code) {
+            $http.post(apiUrl, data).success(function(data, code) {
                 self.deferredHandler(data, deferred, code);
             }).error(function(data, code) {
                 self.deferredHandler(data, deferred, code, $translate.instant('error_modifying'));
@@ -208,7 +206,7 @@
             };
             self.inprocess = true;
             self.error = '';
-            $http.put(apiUrl, data).success(function(data, code) {
+            $http.post(apiUrl, data).success(function(data, code) {
                 self.deferredHandler(data, deferred, code);
             }).error(function(data, code) {
                 self.deferredHandler(data, deferred, code, $translate.instant('error_renaming'));
@@ -334,7 +332,7 @@
             
             self.inprocess = true;
             self.error = '';
-            $http.put(apiUrl, data).success(function(data, code) {
+            $http.post(apiUrl, data).success(function(data, code) {
                 self.deferredHandler(data, deferred, code);
             }).error(function(data, code) {
                 self.deferredHandler(data, deferred, code, $translate.instant('error_changing_perms'));
