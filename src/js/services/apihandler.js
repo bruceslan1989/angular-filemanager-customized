@@ -38,8 +38,10 @@
             var dfHandler = customDeferredHandler || self.deferredHandler;
             var deferred = $q.defer();
             var data = {
-                action: 'list',
-                path: path
+                params: {
+                    action: 'list',
+                    path: path
+                }
             };
 
             self.inprocess = true;
