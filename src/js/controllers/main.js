@@ -165,7 +165,11 @@
         };
 
         $scope.modal = function(id, hide, returnElement) {
+            var modalsAppendToBody = !!$scope.config.modalsAppendToBody;
             var element = $('#' + id);
+            if(modalsAppendToBody){
+                element.appendTo('body');
+            }
             element.modal(hide ? 'hide' : 'show');
             $scope.apiMiddleware.apiHandler.error = '';
             $scope.apiMiddleware.apiHandler.asyncSuccess = false;
