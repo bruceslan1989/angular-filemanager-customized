@@ -41,14 +41,14 @@
             return this.apiHandler.remove(fileManagerConfig.removeUrl, items);
         };
 
-        ApiMiddleware.prototype.upload = function(files, path) {
+        ApiMiddleware.prototype.upload = function(files, path, stateParams) {
             if (! $window.FormData) {
                 throw new Error('Unsupported browser version');
             }
 
             var destination = this.getPath(path);
 
-            return this.apiHandler.upload(fileManagerConfig.uploadUrl, destination, files);
+            return this.apiHandler.upload(fileManagerConfig.uploadUrl, destination, files, stateParams);
         };
 
         ApiMiddleware.prototype.getContent = function(item) {

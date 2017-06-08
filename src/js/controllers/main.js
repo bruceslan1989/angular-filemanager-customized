@@ -1,8 +1,8 @@
 (function(angular, $) {
     'use strict';
     angular.module('FileManagerApp').controller('FileManagerCtrl', [
-        '$scope', '$rootScope', '$window', '$translate', 'fileManagerConfig', 'item', 'fileNavigator', 'apiMiddleware',
-        function($scope, $rootScope, $window, $translate, fileManagerConfig, Item, FileNavigator, ApiMiddleware) {
+        '$scope', '$rootScope', '$window', '$stateParams', '$translate', 'fileManagerConfig', 'item', 'fileNavigator', 'apiMiddleware',
+        function($scope, $rootScope, $window, $stateParams, $translate, fileManagerConfig, Item, FileNavigator, ApiMiddleware) {
 
         var $storage = $window.localStorage;
         $scope.config = fileManagerConfig;
@@ -19,6 +19,10 @@
         $scope.viewTemplate = $storage.getItem('viewTemplate') || 'main-icons.html';
         $scope.fileList = [];
         $scope.temps = [];
+
+        if($stateParams){
+            $scope.stateParams = $stateParams;
+        }
 
         $scope.$watch('temps', function() {
             if ($scope.singleSelection()) {
@@ -333,7 +337,7 @@
         };
 
         $scope.uploadFiles = function() {
-            $scope.apiMiddleware.upload($scope.uploadFileList, $scope.fileNavigator.currentPath).then(function() {
+            $scope.apiMiddleware.upload($scope.uploadFileList, $scope.fileNavigator.currentPath, $scope.stateParams).then(function() {
                 $scope.fileNavigator.refresh();
                 $scope.uploadFileList = [];
                 $scope.modal('uploadfile', true);
