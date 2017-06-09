@@ -120,7 +120,7 @@
             return deferred.promise;
         };
 
-        ApiHandler.prototype.upload = function(apiUrl, destination, files) {
+        ApiHandler.prototype.upload = function(apiUrl, destination, files, stateParams) {
             var self = this;
             var deferred = $q.defer();
             self.inprocess = true;
@@ -128,7 +128,8 @@
             self.error = '';
 
             var data = {
-                destination: destination
+                destination: destination,
+                stateParams: stateParams
             };
 
             for (var i = 0; i < files.length; i++) {
