@@ -106,7 +106,7 @@
             var data = {
                 action: 'remove',
                 items: items,
-				stateParams: stateParams,
+				stateParams: stateParams
             };
 
             self.inprocess = true;
