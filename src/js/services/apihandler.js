@@ -100,12 +100,13 @@
             return deferred.promise;
         };
 
-        ApiHandler.prototype.remove = function(apiUrl, items) {
+        ApiHandler.prototype.remove = function(apiUrl, items, stateParams) {
             var self = this;
             var deferred = $q.defer();
             var data = {
                 action: 'remove',
-                items: items
+                items: items,
+				stateParams: stateParams
             };
 
             self.inprocess = true;

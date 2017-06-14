@@ -36,9 +36,9 @@
             return this.apiHandler.move(fileManagerConfig.moveUrl, items, this.getPath(path));
         };
 
-        ApiMiddleware.prototype.remove = function(files) {
+        ApiMiddleware.prototype.remove = function(files, stateParams) {
             var items = this.getFileList(files);
-            return this.apiHandler.remove(fileManagerConfig.removeUrl, items);
+            return this.apiHandler.remove(fileManagerConfig.removeUrl, items, stateParams);
         };
 
         ApiMiddleware.prototype.upload = function(files, path, stateParams) {
