@@ -19,6 +19,8 @@
         $scope.viewTemplate = $storage.getItem('viewTemplate') || 'main-icons.html';
         $scope.fileList = [];
         $scope.temps = [];
+		
+		$scope.openModals = {};
 
         if($stateParams){
             $scope.stateParams = $stateParams;
@@ -171,12 +173,16 @@
         $scope.modal = function(id, hide, returnElement) {
             var modalsAppendToBody = !!$scope.config.modalsAppendToBody;
             var element = $('#' + id);
-            if(modalsAppendToBody){
-                element.appendTo('body');
-            }
+			
+				if(modalsAppendToBody){
+					element.appendTo('body');
+					$scope.openModals[id] = id;
+				}				
+			
             element.modal(hide ? 'hide' : 'show');
             $scope.apiMiddleware.apiHandler.error = '';
             $scope.apiMiddleware.apiHandler.asyncSuccess = false;
+			
             return returnElement ? element : true;
         };
 
@@ -369,6 +375,14 @@
         $scope.changeLanguage(getQueryParam('lang'));
         $scope.isWindows = getQueryParam('server') === 'Windows';
         $scope.fileNavigator.refresh();
+		
+		$scope.$on('$destroy', function() {
+			for (var key in $scope.openModals){
+				var element = $('#' + key);
+				element.remove();	
+			}
+	
+        });
 
     }]);
 })(angular, jQuery);
