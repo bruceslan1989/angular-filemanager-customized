@@ -1195,7 +1195,7 @@
             name: 'Имя',
             size: 'Размер',
             actions: 'Действия',
-            date: 'Дата',
+            date: 'Datums',
             no_files_in_folder: 'Tukša mape',
             no_folders_in_folder: 'Tukša mape',
             select_this: 'Выбрать',
