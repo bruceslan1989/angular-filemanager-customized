@@ -43,7 +43,7 @@
             $scope.query = '';
             $rootScope.selectedModalPath = $scope.fileNavigator.currentPath;
 
-            $scope.$emit("tree-updated", {
+            $scope.$emit('tree-updated', {
                 path: $scope.fileNavigator.currentPath,
                 history: $scope.fileNavigator.history
             });
