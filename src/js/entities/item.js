@@ -11,6 +11,7 @@
                 type: model && model.type || 'file',
                 size: model && parseInt(model.size || 0),
                 date: parseMySQLDate(model && model.date),
+                modification_date: parseMySQLDate(model && model.modification_date),
                 perms: new Chmod(model && model.rights),
                 content: model && model.content || '',
                 recursive: false,
