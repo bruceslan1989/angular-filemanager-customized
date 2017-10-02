@@ -26,6 +26,8 @@
             $scope.stateParams = $stateParams;
         }
 
+        tryToRestoreState(fileManagerConfig.savedState);
+
         $scope.$watch('temps', function() {
             if ($scope.singleSelection()) {
                 $scope.temp = $scope.singleSelection();
@@ -40,7 +42,19 @@
             $scope.temps = [];
             $scope.query = '';
             $rootScope.selectedModalPath = $scope.fileNavigator.currentPath;
+
+            $scope.$emit("tree-updated", {
+                path: $scope.fileNavigator.currentPath,
+                history: $scope.fileNavigator.history
+            });
         };
+
+        function tryToRestoreState(state) {
+            if (state) {
+                $scope.fileNavigator.currentPath = state.path || [];
+                $scope.fileNavigator.history = state.history;
+            }
+        }
 
         $scope.setTemplate = function(name) {
             $storage.setItem('viewTemplate', name);
